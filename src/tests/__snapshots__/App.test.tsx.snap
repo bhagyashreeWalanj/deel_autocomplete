@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render all components should match the snapshot 1`] = `
+<div
+  className="App-header"
+>
+  <div
+    className="container"
+  >
+    <h1
+      className="header"
+    >
+      REACT AUTOCOMPLETE
+    </h1>
+    <p
+      style={
+        Object {
+          "color": "black",
+        }
+      }
+    >
+      Type 'a' for display list
+    </p>
+    <Autocomplete
+      countries={Array []}
+    />
+  </div>
+</div>
+`;

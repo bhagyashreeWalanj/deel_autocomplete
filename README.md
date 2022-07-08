@@ -1,46 +1,122 @@
-# Getting Started with Create React App
+# DEEL Frontend Code Challenge
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+> This is an implemenation of the Autocomplete app for Deel frontend code challenge.
 
-## Available Scripts
+## Project information
 
-In the project directory, you can run:
+- Developed using React,Typescript, Pure functional components
+- Tested using Jest and Enzyme.
+- React Version `^18.2.0`
+- Node version `v14.17.3` (LTS)
+- Running Application available on [Netlify](https://autocomplete-bhagyashree.netlify.app/)
 
-### `npm start`
+## Project structure
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- `src` Base app files.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- `src/components` Reusable components, in this case Autocomplete
+- `src/part1` included Questions.md file
 
-### `npm test`
+- `src/interface` Interface for autocomplete
+- `src/API` Implementation of realtime server details
+- `src/tests` Folder for tests files,
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Technical Documentation
 
-### `npm run build`
+Please prepare an auto-complete component in React TypeScript.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. You cannot use any 3rd party libraries - only pure React and internal DOM
+   functions.
+2. You should use typescript and write proper interfaces and types.
+3. The function to filter the data should be asynchronous. You can use mock data
+   (such as a JSON array), but the function which uses it should be asynchronous
+   (similar to a real REST call).
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+4. It should have basic working CSS. No need for anything fancy (such as drop-
+   shadows etc), but should look decent.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+5. You need to handle all non-standard/edge use-cases - it should have a perfect
+   user-experience.
+6. Highlight the matching part of the text, in addition to showing it.
+7. No external state management libraries (refer to #1 as well), only native React
+   method.
+8. Use only functional component with hooks.
+9. Shortcuts and hacks are perfectly ok - but you have to add comments on what
+   are you doing there and why. You should either write production ready code or
+   include comments on what needs to be changed for production.
+10. Add a README.md file explaining how to run the project.
+11. Bonus #1: load data using a real API call to some resource.
 
-### `npm run eject`
+## Database :
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+for real time database , I have been using open seever for create, update and delete operations of to-do list
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- [REST api](https://countriesnow.space/api/v0.1/countries/positions)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Reference Link:
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+`https://documenter.getpostman.com/view/1134062/T1LJjU52#4d1b73b4-06fb-4031-b04b-e586a156f7aa)`
 
-## Learn More
+## Sample mocked Json
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```
+[
+    {
+       "option": 'Germany',
+       "highlighted": 'Germany'
+    },
+    ...
+]
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```
+
+## Third Party Libraries
+
+- [TypeScript](https://www.typescriptlang.org/) for static type checking.
+- [React / create-react-app](https://github.com/facebook/create-react-app)
+- [Jest](https://jestjs.io/) for testing
+- [Enzyme](https://airbnb.io/enzyme/) for testing
+- [enzyme-adapter-react-16](https://enzymejs.github.io/enzyme/docs/installation/react-16.html) an adapter between React and Enzyme. This will be executed before running the tests.
+
+- [React Icons](https://react-icons.github.io/react-icons) for icons
+
+## AUTOCOMPLETE's
+
+If I had a little more time to invest on this code assignment, I would probably
+focus on:
+
+- Extract some code into components, for example handleOnChangeText implementation
+- Add more coverage for the tests
+- On clear button, clears current text from the textbox, and doesn't affect actual mock data. As soon as You refresh the page, it displays all tasks.
+
+## Project commands
+
+### Install dependencies
+
+```zsh
+npm i
+```
+
+### Running the project
+
+```zsh
+# (make sure dependencies have been installed before.)
+npm start
+```
+
+### Executing tests
+
+This project contains an extensive suite of tests and makes use of [Jest](https://jestjs.io/) and [Enzyme](https://github.com/airbnb/enzyme).
+
+Run all tests by executing.
+
+```zsh
+# (make sure dependencies have been installed before.)
+npm test
+```
+
+Or
+
+```zsh
+npm run test -- -u
+```

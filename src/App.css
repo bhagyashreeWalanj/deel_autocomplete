@@ -1,38 +1,99 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
 .App-header {
-  background-color: #282c34;
+  background-color: #a6e2ff;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+  /* display: flex;
+  flex-direction: column; */
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  padding-top: 4rem;
 }
 
-.App-link {
-  color: #61dafb;
+
+.container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: auto;
+  /* margin-top: 4rem; */
+}
+.header{
+  color: chocolate;
+  font-size: 26px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.autocomplete{
+  width: 500px;
+  border: 1px solid #d4d4d4;
+  border-radius: 10px;
+  background: #fff;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.autocomplete input{
+  width: 27rem;
+  border: none;
+  margin: 10px 0;
+  font-size: 16px;
+  padding: 10px 10px 0 10px;
+
+}
+
+input:focus{
+  outline: none;
+}
+
+.suggestions{
+  list-style: none;
+  max-height: 30rem;
+  /* height:500px; */
+  overflow: auto;
+  overflow-y:scroll;
+  color: #282c34;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid #d4d4d4;
+  background-color: #f7f7f7;
+  border-radius: 0 0 10px 10px;
+  scroll-behavior: smooth; /* nice smooth movement */
+  font-size: 16px;
+
+}
+
+.suggestions li{
+  list-style: none;
+  padding: 10px;
+  cursor: pointer;
+}
+strong {
+  background: #29c076;
+  color: #f7f7f7;
+  font-weight: inherit;
+}
+.suggestions li:focus{
+  background:LIGHTSALMON;
+  outline:none;
+}
+.autocomplete li:hover{
+  background-color: lightskyblue;
+}
+
+
+
+.option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 500px;
+  padding: 5px;
+}
+
+.closeButton{
+  width: 2rem;
+  height: 1.5rem;
+  margin: 0.8rem 0.3rem 0 0;
+  float: right;
+  cursor: pointer;
+  color: tomato;
 }
