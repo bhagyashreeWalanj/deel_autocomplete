@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import './App.css'
 import Autocomplete from './components/Autocomplete'
-import { API_URL } from './API/api'
+import { API_URL } from './util/constant'
 
 function App() {
   const [countries, setCountries] = useState<string[]>([])

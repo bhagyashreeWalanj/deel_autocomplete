@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useMemo } from 'react'
+import React, { useState, useEffect, useRef, useMemo } from 'react'
 import { TiLocation, TiDelete } from 'react-icons/ti'
 import { getMatchedOption, highlightText } from '../util/getMatchedOption'
 
