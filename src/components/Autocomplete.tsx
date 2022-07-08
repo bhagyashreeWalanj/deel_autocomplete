@@ -34,7 +34,7 @@ const Autocomplete = ({ countries }: IAutocomplete) => {
 
   // Handle On change textbox method
   const handleOnChangeText = (e: any) => {
-    let searchText: string = e.target.value
+    let searchText: string = e.target.value.replace(/[^a-zA-Z\s]/g, '')
     !searchValue ? setVisiblity(false) : setVisiblity(true)
 
     setSearchValue(searchText)

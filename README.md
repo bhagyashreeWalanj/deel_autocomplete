@@ -49,21 +49,25 @@ Please prepare an auto-complete component in React TypeScript.
 
 ## Database :
 
-for real time database , I have been using open seever for create, update and delete operations of to-do list
+for real time database , I have been using open API server for displaying contries data
 
 - [REST api](https://countriesnow.space/api/v0.1/countries/positions)
 
-Reference Link:
+Documentation Reference:
 
 `https://documenter.getpostman.com/view/1134062/T1LJjU52#4d1b73b4-06fb-4031-b04b-e586a156f7aa)`
 
-## Sample mocked Json
+## Sample mocked Json:
 
 ```
 [
     {
        "option": 'Germany',
        "highlighted": 'Germany'
+    },
+    {
+       "option": 'Italy',
+       "highlighted": 'Italy'
     },
     ...
 ]
@@ -85,9 +89,8 @@ Reference Link:
 If I had a little more time to invest on this code assignment, I would probably
 focus on:
 
-- Extract some code into components, for example handleOnChangeText implementation
 - Add more coverage for the tests
-- On clear button, clears current text from the textbox, and doesn't affect actual mock data. As soon as You refresh the page, it displays all tasks.
+- Keydown and KeyUp handling on list
 
 ## Project commands
 
