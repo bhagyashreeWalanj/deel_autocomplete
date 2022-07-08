@@ -16,8 +16,6 @@
 
 - `src/components` Reusable components, in this case Autocomplete
 - `src/part1` included Questions.md file
-
-- `src/interface` Interface for autocomplete
 - `src/API` Implementation of realtime server details
 - `src/tests` Folder for tests files,
 
@@ -60,17 +58,21 @@ Documentation Reference:
 ## Sample mocked Json:
 
 ```
-[
-    {
-       "option": 'Germany',
-       "highlighted": 'Germany'
-    },
-    {
-       "option": 'Italy',
-       "highlighted": 'Italy'
-    },
-    ...
-]
+{
+	"error": false,
+	"msg": "countries and positions retrieved",
+	"data": [{
+				"name": "Afghanistan",
+				"iso2": "AF",
+				"long": 65,
+				"lat": 33
+			}, {
+				"name": "Albania",
+				"iso2": "AL",
+				"long": 20,
+				"lat": 41
+			}, ...]
+}
 
 ```
 

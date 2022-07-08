@@ -1,40 +1,26 @@
-import { ISuggestion } from "../interface/ISuggestion";
 
-// Hnadle the matching text method and return with highlighted text
-export const getMatchedOption= (countries: ISuggestion[], searchText: string): ISuggestion[] => {
-  let result: ISuggestion[] =[];
+export const getMatchedOption= (countries: string[], searchText: string): string[] => {
+  let result: string[] =[];
 
   countries.forEach((country: any) => {
-    const element: string = country.option
-    let matchText: string ='';
-   
-    let matchStartIndex: number = 0
-    if (
-      (matchStartIndex = element
-        .toLowerCase()
-        .indexOf(searchText.toLowerCase())) > -1
-    ) {
-      let matchStart = element.slice(0, matchStartIndex)
-      let highlighted = element.substring(
+    const element: string = country
+    if (element.toLowerCase().indexOf(searchText.toLowerCase()) > -1) {
+        result.push(element);
+    }
+  })    
+    return result;
+  }
+
+  // Handle the matching text method and return with highlighted text
+  export const highlightText = (country: string, searchText: string) => {
+    let matchStartIndex = country.toLowerCase().indexOf(searchText.toLowerCase());
+    let matchStart = country.slice(0, matchStartIndex)
+      let highlighted = country.substring(
         matchStartIndex,
         matchStartIndex + searchText.length,
       )
-      let matchEnd: string = element.substring(
+      let matchEnd: string = country.substring(
         matchStartIndex + searchText.length,
       )
-
-      if (matchStartIndex >= 0) {
-        matchText = `${matchStart}<strong>${highlighted}</strong>${matchEnd}`
-        result.push({
-          option: element,
-          highlighted: matchText,
-        })
-      }
-    
-    }
-  })
-
-   // const element: string = option.option
-    
-    return result;
+      return `${matchStart}<strong>${highlighted}</strong>${matchEnd}`
   }

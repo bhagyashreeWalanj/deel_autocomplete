@@ -2,14 +2,7 @@ import Autocomplete from '../components/Autocomplete'
 import { mount, shallow, render } from 'enzyme'
 
 describe('Testing Autocomplete component', () => {
-  const options = [
-    { option: 'India', highlighted: 'India' },
-    { option: 'Albania', highlighted: 'Albania' },
-    { option: 'Bermuda', highlighted: 'Bermuda' },
-    { option: 'Portugal', highlighted: 'Portugal' },
-    { option: 'Italy', highlighted: 'Italy' },
-    { option: 'Spain', highlighted: 'Spain' },
-  ]
+  const options = ['India', 'Albania', 'Bermuda', 'Portugal', 'Italy', 'Spain']
 
   const wrapper = shallow(<Autocomplete countries={options} />)
   const inputContainer = wrapper.find('#autocomplete_input')
@@ -34,10 +27,12 @@ describe('Testing Autocomplete component', () => {
     expect(filtersuggestion.html()).toContain('Port')
   })
 
-  it('should clear the selected text from the input', () => {
+  it('should clear the selected text from the input and show all countries', () => {
     inputContainer.simulate('change', { target: { value: 'Spain' } })
     wrapper.find('.closeButton').simulate('click')
+    const filtersuggestion = wrapper.find('.options')
     expect(inputContainer.text()).toBe('')
+    expect(filtersuggestion.length).toBe(6)
   })
 
   it('should highlight the matching text on selection', () => {

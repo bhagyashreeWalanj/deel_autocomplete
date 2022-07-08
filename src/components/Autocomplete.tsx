@@ -1,51 +1,37 @@
 import React, { useState, useEffect, useRef, useMemo } from 'react'
 import { TiLocation, TiDelete } from 'react-icons/ti'
-import { getMatchedOption } from '../API/getMatchedOption'
-import { ISuggestion } from '../interface/ISuggestion'
+import { getMatchedOption, highlightText } from '../API/getMatchedOption'
 
 export interface IAutocomplete {
-  countries: ISuggestion[]
+  countries: string[]
 }
 
 const Autocomplete = ({ countries }: IAutocomplete) => {
-  const [searchValue, setSearchValue] = useState<string>('')
-  const [matchedContries, setMatchedContries] = useState<ISuggestion[]>([])
+  const [searchInput, setSearchInput] = useState<string>('')
   const [isVisible, setVisiblity] = useState(false)
   const autoCompleteRef = useRef<HTMLDivElement>(null)
 
   const suggestions = useMemo(() => {
-    let filteredCountries: ISuggestion[] = []
-    if (matchedContries.length !== 0) {
-      !searchValue
-        ? (filteredCountries = countries)
-        : (filteredCountries = matchedContries)
-    } else {
-      countries.forEach((country) => {
-        if (country.option.toLowerCase().includes(searchValue.toLowerCase())) {
-          filteredCountries.push({
-            option: country.option,
-            highlighted: country.highlighted,
-          })
-        }
-      })
-    }
+    let filteredCountries: string[] = []
+    filteredCountries =
+      searchInput.length !== 0
+        ? getMatchedOption(countries, searchInput)
+        : countries
+
     return filteredCountries
-  }, [countries, searchValue])
+  }, [countries, searchInput])
 
   // Handle On change textbox method
   const handleOnChangeText = (e: any) => {
     let searchText: string = e.target.value.replace(/[^a-zA-Z\s]/g, '')
-    !searchValue ? setVisiblity(false) : setVisiblity(true)
+    !searchText ? setVisiblity(false) : setVisiblity(true)
 
-    setSearchValue(searchText)
-    let finalArray: ISuggestion[] = []
-    finalArray = getMatchedOption(countries, searchText)
-    setMatchedContries(finalArray)
+    setSearchInput(searchText)
   }
 
   // Handle onClick of country select and set on input
   const handleSuggestion = (suggestion: string) => {
-    setSearchValue(suggestion)
+    setSearchInput(suggestion)
     setVisiblity(false)
   }
 
@@ -59,7 +45,7 @@ const Autocomplete = ({ countries }: IAutocomplete) => {
 
   // Delete the text from input
   const handleDelete = () => {
-    setSearchValue('')
+    setSearchInput('')
     setVisiblity(true)
   }
 
@@ -75,13 +61,13 @@ const Autocomplete = ({ countries }: IAutocomplete) => {
       <input
         type="text"
         id="autocomplete_input"
-        value={searchValue}
+        value={searchInput}
         onChange={(e) => handleOnChangeText(e)}
         placeholder="Search Country..."
         autoComplete="off"
       />
 
-      {searchValue !== '' ? (
+      {searchInput !== '' ? (
         <TiDelete
           className="closeButton"
           onClick={handleDelete}
@@ -103,12 +89,14 @@ const Autocomplete = ({ countries }: IAutocomplete) => {
                 <li
                   className="options"
                   id={`#suggest_${index}`}
-                  onClick={() => handleSuggestion(country.option)}
-                  key={country.option}
+                  onClick={() => handleSuggestion(country)}
+                  key={country}
                 >
                   <TiLocation style={{ marginRight: '0.8rem' }} />
                   <span
-                    dangerouslySetInnerHTML={{ __html: country.highlighted }}
+                    dangerouslySetInnerHTML={{
+                      __html: highlightText(country, searchInput),
+                    }}
                   ></span>
                 </li>
               )
