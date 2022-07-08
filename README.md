@@ -8,7 +8,7 @@
 - Tested using Jest and Enzyme.
 - React Version `^18.2.0`
 - Node version `v14.17.3` (LTS)
-- Running Application available on [Netlify](https://autocomplete-bhagyashree.netlify.app/)
+- Running Application available on [Heroku](https://deel-autocomplete.herokuapp.com/)
 
 ## Project structure
 
